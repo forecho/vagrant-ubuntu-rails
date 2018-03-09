@@ -33,6 +33,9 @@ git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-buil
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 
+# 使用 Ruby China 的镜像安装 Ruby
+git clone https://github.com/andorchen/rbenv-china-mirror.git /home/vagrant/.rbenv/plugins/rbenv-china-mirror
+
 # 安装 ruby
 sudo -H -u vagrant bash -i -c 'rbenv install 2.5.0'
 sudo -H -u vagrant bash -i -c 'rbenv rehash'
@@ -58,4 +61,3 @@ sudo apt-get -y install mysql-server  mysql-client  libmysqlclient-dev
 git clone git://github.com/joelthelion/autojump.git /home/vagrant/autojump
 sudo -H -u vagrant bash -i -c 'cd /home/vagrant/autojump && ./install.py'
 sudo -H -u vagrant bash -i -c 'echo "[[ -s /home/vagrant/.autojump/etc/profile.d/autojump.sh ]] && source /home/vagrant/.autojump/etc/profile.d/autojump.sh">> /home/vagrant/.bashrc'
-sudo -H -u vagrant bash -i -c 'source ~/.bashrc'
