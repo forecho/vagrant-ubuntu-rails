@@ -9,6 +9,7 @@
 - git 1.9.1
 - [autojump](https://github.com/joelthelion/autojump)
 - vim 7.4.52
+- nodejs v0.10.25
 
 ## Box地址
 
