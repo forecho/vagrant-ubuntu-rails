@@ -32,7 +32,7 @@ vagrant box add trusty64 ubuntu_trusty_64.box
 vagrant box list // 查看
 mkdir ubuntu // 创建文件夹
 git clone https://github.com/forecho/vagrant-ubuntu-rails.git rails
-cd php7
+cd rails
 ```
 然后启动 vagrant
 
