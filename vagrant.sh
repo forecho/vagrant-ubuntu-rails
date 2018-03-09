@@ -19,7 +19,7 @@ locale-gen zh_CN.UTF-8
 sudo apt-get update > /dev/null
 
 # 安装需要的库和软件
-sudo apt-get install -y git-core curl zlib1g-dev build-essential \
+sudo apt-get install -y git-core curl nodejs zlib1g-dev build-essential \
                      libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 \
                      libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common
 
@@ -43,19 +43,20 @@ sudo -H -u vagrant bash -i -c 'rbenv global 2.5.0'
 sudo -H -u vagrant bash -i -c 'gem install bundler --no-ri --no-rdoc'
 sudo -H -u vagrant bash -i -c 'rbenv rehash'
 
-# gem 操作 && 安装 rails
+# gem 操作 && 安装 rails && 换源
 sudo -H -u vagrant bash -i -c 'echo "gem: --no-ri --no-rdoc" > ~/.gemrc'
-sudo -H -u vagrant bash -i -c 'gem source -a https://gems.ruby-china.org'
+sudo -H -u vagrant bash -i -c 'gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/'
+sudo -H -u vagrant bash -i -c 'gem sources -l'
+sudo -H -u vagrant bash -i -c 'bundle config mirror.https://rubygems.org https://gems.ruby-china.org'
 sudo -H -u vagrant bash -i -c 'gem install rails -v 5.1.5'
 sudo -H -u vagrant bash -i -c 'rails -v'
 
 # 安装 MySQL
+sudo apt-get install mysql-client libmysqlclient-dev -y
 sudo apt-get install debconf-utils -y
-
-debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
-debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
-
-sudo apt-get -y install mysql-server  mysql-client  libmysqlclient-dev
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
+sudo apt-get install mysql-server -y
 
 # install autojump https://github.com/wting/autojump
 git clone git://github.com/joelthelion/autojump.git /home/vagrant/autojump
