@@ -48,7 +48,7 @@ sudo -H -u vagrant bash -i -c 'echo "gem: --no-ri --no-rdoc" > ~/.gemrc'
 sudo -H -u vagrant bash -i -c 'gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/'
 sudo -H -u vagrant bash -i -c 'gem sources -l'
 sudo -H -u vagrant bash -i -c 'bundle config mirror.https://rubygems.org https://gems.ruby-china.org'
-sudo -H -u vagrant bash -i -c 'gem install rails -v 5.1.5'
+sudo -H -u vagrant bash -i -c 'gem install rails'
 sudo -H -u vagrant bash -i -c 'rails -v'
 
 # 安装 MySQL
